@@ -109,6 +109,17 @@ function burned() {
     head.innerText = 'You got burned'
 }
 
+function weightGain(beetle, value) {
+    const currWidth = beetle.style.width;
+    if (!currWidth) {
+        var newValue = 60
+        beetle.style.width = `${newValue + value}px`
+    } else {
+        const newWidth = parseInt(currWidth.slice(0, -2))
+        beetle.style.width = `${newWidth + 10}px`
+    }
+}
+
 play.addEventListener('click', function () {
     makeBalls();
     counter = 0;
