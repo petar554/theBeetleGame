@@ -5,18 +5,6 @@ const play = document.querySelector('#play');
 const btns = document.querySelectorAll('.btns');
 const end = document.querySelector('#end');
 
-function isTouching(a, b) {
-    const aRect = a.getBoundingClientRect();
-    const bRect = b.getBoundingClientRect();
-
-    return !(
-        aRect.top + aRect.height < bRect.top ||
-        aRect.top > bRect.top + bRect.height ||
-        aRect.left + aRect.width < bRect.left ||
-        aRect.left > bRect.left + bRect.width
-    );
-}
-
 let redArr = [];
 let greenArr = [];
 let counter = 0;
@@ -35,8 +23,10 @@ window.addEventListener('keydown', function (e) {
     }
 
     if (changeToNumber(beetle.style.top) < -10 || changeToNumber(beetle.style.top) > 370) {
+        play.innerHTML = 'Play Again';
         burned();
     } else if (changeToNumber(beetle.style.left) < -10 || changeToNumber(beetle.style.left) > 935) {
+        play.innerHTML = 'Play Again';
         burned();
     }
 
@@ -47,8 +37,8 @@ window.addEventListener('keydown', function (e) {
             counter = counter + 1;
             weightGain(beetle, 15);
         } else if (isTouching(beetle, redArr[i])) {
-            head.innerText = 'You touched the red ball - Game Over'
-            play.innerHTML = 'Play Again'
+            head.innerText = 'You touched the red ball - Game Over';
+            play.innerHTML = 'Play Again';
             //alert('GAME OVER')
         } else if (counter === 3 && isTouching(beetle, end)) {
             gameBoard.style.backgroundImage = "url('https://image.shutterstock.com/image-vector/winner-sign-congratulations-win-banner-260nw-569199769.jpg')";
@@ -56,6 +46,18 @@ window.addEventListener('keydown', function (e) {
         }
     }
 });
+
+function isTouching(a, b) {
+    const aRect = a.getBoundingClientRect();
+    const bRect = b.getBoundingClientRect();
+
+    return !(
+        aRect.top + aRect.height < bRect.top ||
+        aRect.top > bRect.top + bRect.height ||
+        aRect.left + aRect.width < bRect.left ||
+        aRect.left > bRect.left + bRect.width
+    );
+}
 
 function moveSnakeVertically(b, amount, text) {
     if (text === 'Beetle Game') {
