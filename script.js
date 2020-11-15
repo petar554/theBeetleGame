@@ -41,6 +41,7 @@ window.addEventListener('keydown', function (e) {
             play.innerHTML = 'Play Again';
             //alert('GAME OVER')
         } else if (counter === 3 && isTouching(beetle, end)) {
+            play.innerHTML = 'Play Again';
             gameBoard.style.backgroundImage = "url('https://image.shutterstock.com/image-vector/winner-sign-congratulations-win-banner-260nw-569199769.jpg')";
             document.body.style.backgroundColor = 'Darkmagenta'
         }
