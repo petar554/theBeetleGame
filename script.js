@@ -34,6 +34,13 @@ window.addEventListener('keydown', function (e) {
         moveSnakeHorizontally(beetle, -10, head.innerText);
     }
 
+    if (changeToNumber(beetle.style.top) < -10 || changeToNumber(beetle.style.top) > 370) {
+        burned();
+    } else if (changeToNumber(beetle.style.left) < -10 || changeToNumber(beetle.style.left) > 935) {
+        burned();
+    }
+
+
     for (let i = 0; i < btns.length; i++) {
         if (isTouching(beetle, greenArr[i])) {
             gameBoard.removeChild(greenArr[i]);
@@ -92,6 +99,12 @@ function makeBalls() {
 function randomNum() {
     const h = Math.floor(Math.random() * 370);
     return `${h}px`
+}
+
+function burned() {
+    beetle.style.top = `${200}px`
+    beetle.style.left = `${250}px`
+    head.innerText = 'You got burned'
 }
 
 play.addEventListener('click', function () {
