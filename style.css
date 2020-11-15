@@ -52,3 +52,18 @@ h1{
     left: 920px;
     top: 170px;
 }
+
+.green {
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+.red {
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}

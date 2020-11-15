@@ -1,7 +1,7 @@
 const head = document.querySelector('#heading');
 const beetle = document.querySelector('#beetle');
 const gameBoard = document.querySelector('#gameBoard');
-const playAgain = document.querySelector('#playAgain');
+const play = document.querySelector('#play');
 const btns = document.querySelectorAll('.btns');
 const end = document.querySelector('#end');
 
@@ -53,8 +53,38 @@ function moveSnakeHorizontally(b, amount, text) {
     }
 }
 
-
 function changeToNumber(pos) {
     if (!pos) return 200
     return parseInt(pos.slice(0, -2));
 }
+
+function makeBalls() {
+    head.innerText = 'Beetle Game'
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].style.top = randomNum();
+        if (i % 2 === 0) {
+            btns[i].classList.add('green');
+            greenArr.push(btns[i]);
+            gameBoard.appendChild(btns[i]);
+        } else {
+            btns[i].classList.add('red');
+            redArr.push(btns[i]);
+            gameBoard.appendChild(btns[i]);
+        }
+    }
+}
+
+function randomNum() {
+    const h = Math.floor(Math.random() * 370);
+    return `${h}px`
+}
+
+play.addEventListener('click', function () {
+    makeBalls();
+    counter = 0;
+    beetle.style.width = `${60}px`
+    beetle.style.top = `${200}px`
+    beetle.style.left = `${250}px`
+    gameBoard.style.backgroundImage = '';
+    document.body.style.backgroundColor = '';
+});
