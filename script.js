@@ -33,6 +33,18 @@ window.addEventListener('keydown', function (e) {
     else if (e.key === 'ArrowLeft' || e.key === 'Left') {
         moveSnakeHorizontally(beetle, -10, head.innerText);
     }
+
+    for (let i = 0; i < btns.length; i++) {
+        if (isTouching(beetle, greenArr[i])) {
+            gameBoard.removeChild(greenArr[i]);
+            counter = counter + 1;
+            weightGain(beetle, 15);
+        } else if (isTouching(beetle, redArr[i])) {
+            head.innerText = 'You touched the red ball - Game Over'
+            play.innerHTML = 'Play Again'
+            //alert('GAME OVER')
+        } 
+    }
 });
 
 function moveSnakeVertically(b, amount, text) {
@@ -82,6 +94,7 @@ function randomNum() {
 play.addEventListener('click', function () {
     makeBalls();
     counter = 0;
+    play.innerHTML = 'Play'
     beetle.style.width = `${60}px`
     beetle.style.top = `${200}px`
     beetle.style.left = `${250}px`
