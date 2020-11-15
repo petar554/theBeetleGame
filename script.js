@@ -43,7 +43,10 @@ window.addEventListener('keydown', function (e) {
             head.innerText = 'You touched the red ball - Game Over'
             play.innerHTML = 'Play Again'
             //alert('GAME OVER')
-        } 
+        } else if (counter === 3 && isTouching(beetle, end)) {
+            gameBoard.style.backgroundImage = "url('https://image.shutterstock.com/image-vector/winner-sign-congratulations-win-banner-260nw-569199769.jpg')";
+            document.body.style.backgroundColor = 'Darkmagenta'
+        }
     }
 });
 
