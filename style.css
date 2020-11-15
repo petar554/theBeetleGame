@@ -39,3 +39,16 @@ h1{
     margin: 10px;
     letter-spacing: 2px;
 }
+
+#start {
+    position: absolute;
+    transform: rotate(-90deg);
+    left: 10px;
+    top: 170px;
+}
+#end{
+    position: absolute;
+    transform: rotate(-270deg);
+    left: 920px;
+    top: 170px;
+}
